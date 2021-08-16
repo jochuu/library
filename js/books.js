@@ -1,3 +1,5 @@
+let bookContainer = document.querySelector(".books");
+
 class Book {
   constructor(title, author, pages, read) {
     (this.title = title),
@@ -17,22 +19,51 @@ let myLibrary = [
 ];
 
 function addBookToLibrary(array) {
-  let container = document.querySelector(".container");
+  bookContainer.textContent = "";
 
-  array.forEach((b) => {
+  array.forEach((b, index) => {
     let card = document.createElement("div");
+    let title = document.createElement("div");
+    let author = document.createElement("div");
+    let pages = document.createElement("div");
+    let read = document.createElement("div");
+    let removeButton = document.createElement("button");
+
+    title.textContent = b.title;
+    author.textContent = `by ${b.author}`;
+    pages.textContent = `${b.pages} pages`;
+    let hasBeenRead = b.read ? "read" : "not read yet";
+    read.textContent = hasBeenRead;
+
+    removeButton.textContent = "delete";
+    removeButton.onclick = () => removeBookFromLibrary(array, index);
+
     card.classList.add("book");
-    card.textContent = `${b.title} by ${b.author}, ${b.pages} pages, ${b.read}`;
-    container.appendChild(card);
+    title.classList.add("title");
+    author.classList.add("author");
+    pages.classList.add("pages");
+    read.classList.add("read");
+
+    card.append(title, author, pages, read, removeButton);
+    card.dataset.index = index;
+    bookContainer.appendChild(card);
   });
 }
-addBookToLibrary(myLibrary);
+
+function removeBookFromLibrary(array, index) {
+  array.splice(index, 1);
+  addBookToLibrary(array);
+}
 
 document.querySelector(".newBookBtn").onclick = () => {
-  let container = document.querySelector(".container");
-  let card = document.createElement("div");
-  let b = new Book("test4", "wow", "500", true);
-  card.classList.add("book");
-  card.textContent = `${b.title} by ${b.author}, ${b.pages} pages, ${b.read}`;
-  container.appendChild(card);
+  let titleTextBox = document.querySelector("#title").value;
+  let authorTextBox = document.querySelector("#author").value;
+  let pagesTextBox = document.querySelector("#pages").value;
+  let readCheckBox = document.querySelector("#read").checked;
+
+  let b = new Book(titleTextBox, authorTextBox, pagesTextBox, readCheckBox);
+  myLibrary.push(b);
+  addBookToLibrary(myLibrary);
 };
+
+addBookToLibrary(myLibrary);

@@ -1,0 +1,90 @@
+html,
+body {
+  background: #4d685a;
+  font-family: monospace;
+  color: #fcfcfc;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fcfcfc;
+  opacity: 0.24; /* Firefox */
+}
+
+button {
+  background-color: #4fb286;
+  border: 0px;
+  border-radius: 4px;
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  font-family: monospace;
+  color: #fcfcfc;
+}
+
+h1 {
+  color: #50ffb1;
+}
+
+.title {
+  color: #50ffb1;
+}
+
+label {
+  color: #4fb286;
+  font-weight: 600;
+}
+input:focus {
+  border: 0px;
+  background-color: #3c896d;
+}
+input {
+  background-color: #546d64;
+  border: 0px;
+  border-radius: 4px;
+  height: 25px;
+  color: #fcfcfc;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid #3c896d;
+  border-bottom: 2px solid #3c896d;
+  border-radius: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px 0 15px 0;
+}
+
+.books {
+  display: flex;
+  padding: 10px;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  text-align: center;
+  margin: 15px;
+  width: 100%;
+  padding: 15px 0 15px 0;
+  gap: 2px;
+}
+
+.book {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 5px;
+}
+
+.newBooks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 300px;
+  margin: 15px;
+  padding: 15px 0 15px 100px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: larger;
+}
