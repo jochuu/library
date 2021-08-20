@@ -1,55 +1,75 @@
+:root {
+  --color-1: #50ffb1;
+  --color-2: #4fb286;
+  --color-3: #3c896d;
+  --color-4: #546d64;
+  --color-5: #4d685a;
+  --white: #fcfcfc;
+}
+
 html,
 body {
-  background: #4d685a;
+  background: var(--color-5);
   font-family: monospace;
-  color: #fcfcfc;
+  color: var(--white);
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #fcfcfc;
+  color: var(--white);
   opacity: 0.24; /* Firefox */
 }
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
 
+  /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+  -ms-user-select: none;
+  user-select: none;
+}
 button {
-  background-color: #4fb286;
+  background-color: var(--color-2);
   border: 0px;
   border-radius: 4px;
   height: auto;
   width: auto;
   margin: 0 auto;
   font-family: monospace;
-  color: #fcfcfc;
+  color: var(--white);
 }
 
 h1 {
-  color: #50ffb1;
+  color: var(--color-1);
 }
 
 .title {
-  color: #50ffb1;
+  color: var(--color-1);
 }
 
 label {
-  color: #4fb286;
+  color: var(--color-2);
   font-weight: 600;
 }
 input:focus {
   border: 0px;
-  background-color: #3c896d;
+  background-color: var(--color-3);
 }
 input {
-  background-color: #546d64;
+  background-color: var(--color-4);
   border: 0px;
   border-radius: 4px;
   height: 25px;
-  color: #fcfcfc;
+  color: var(--white);
 }
 .container {
   display: flex;
   justify-content: center;
-  border-top: 2px solid #3c896d;
-  border-bottom: 2px solid #3c896d;
+  border-top: 2px solid var(--color-3);
+  border-bottom: 2px solid var(--color-3);
   border-radius: 40px;
   max-width: 800px;
   margin: 0 auto;
@@ -87,4 +107,21 @@ input {
 .title {
   font-weight: 600;
   font-size: larger;
+}
+
+.footer:hover {
+  text-decoration: wavy;
+}
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--color-1);
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -ms-appearance: none;
+  text-decoration: none;
+  padding: 5px;
+  margin: 0 5px;
 }

@@ -18,6 +18,14 @@ let myLibrary = [
   new Book("Book 2", "An Author", 666, true),
 ];
 
+Book.prototype.toggleReadStatus = function () {
+  if (this.read === true) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }
+};
+
 function addBookToLibrary(array) {
   bookContainer.textContent = "";
 
@@ -34,6 +42,11 @@ function addBookToLibrary(array) {
     pages.textContent = `${b.pages} pages`;
     let hasBeenRead = b.read ? "read" : "not read yet";
     read.textContent = hasBeenRead;
+    read.onclick = (e) => {
+      e.preventDefault();
+      b.toggleReadStatus();
+      addBookToLibrary(array);
+    };
 
     removeButton.textContent = "delete";
     removeButton.onclick = () => removeBookFromLibrary(array, index);
@@ -43,6 +56,7 @@ function addBookToLibrary(array) {
     author.classList.add("author");
     pages.classList.add("pages");
     read.classList.add("read");
+    read.classList.add("unselectable");
 
     card.append(title, author, pages, read, removeButton);
     card.dataset.index = index;
